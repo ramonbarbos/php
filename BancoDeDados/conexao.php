@@ -3,7 +3,7 @@
 define('HOST', 'localhost');
 define('DBNAME', 'primeirobanco');
 define('USER', 'root');
-define('PASS', '00000');
+define('PASS', '');
 
 
 try {

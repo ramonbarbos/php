@@ -1,0 +1,49 @@
+/*
+Site de fontes: https://fonts.google.com/
+Site de Icones: https://fontawesome.com/v4/get-started/
+*/
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.center-wp {
+    background-image: url("../img/PAPEL.jpg");
+    background-position: center;
+    background-size: cover;
+   
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.center-a {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.3vmin
+}
+.w50-t{
+    width: 50%;
+    
+}
+.w50-f{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
