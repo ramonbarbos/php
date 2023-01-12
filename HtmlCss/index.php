@@ -10,11 +10,27 @@
 
     <!--BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  
     <title>Portfolio</title>
 </head>
 <body>
     
+<?php
+     $url = isset($_GET['url']) ? $_GET['url'] : 'home'; //Buscando a pagina home
+
+     switch($url){
+    
+      case 'servicos';
+        echo '<target target="servicos" />';
+        break;
+
+      default:
+        echo '<target target="contato" />';
+        break;
+     }
+
+
+?>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Meu Site</a>
@@ -27,10 +43,10 @@
                 <a class="nav-link active" aria-current="page" href="<?php echo INCLUDE_PATH; ?>">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Serviços</a>
+                <a class="nav-link" href="servicos">Serviços</a>
               </li>
               <li class="nav-item">
-                <a  realtime="contato" class="nav-link" href="<?php echo INCLUDE_PATH; ?>pages/contato.php">Contato</a>
+                <a  realtime class="nav-link" href="" >Contato</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,7 +75,11 @@
        include('pages/'.$url.'.php');
      }else{
        //Podemos fazer o que quiser pois a pagina nao existe
-       include('pages/404.php');
+       if($url != 'contato' && $url != 'servicos'){
+        include('pages/404.php');
+       }else{
+        include('home.php');
+       }
      }
      
   ?>
@@ -70,6 +90,7 @@
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  
+    <script src="./script.js"></script>
+
 </body>
 </html>
