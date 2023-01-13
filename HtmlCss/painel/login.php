@@ -1,3 +1,6 @@
+
+<?php  include('./classes/MySql.php') ?>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -11,14 +14,37 @@
  <section style="background-color: rgb(113, 113, 113);display: flex; align-items: center; height: 100vh;">
 
     <div class="container-sm" style="border-radius: 7px; background-color: rgb(250, 250, 250); display: flex; align-items: center;justify-content: center; padding: 40px; width: 800px;">
-        <form style="width: 600px;">
+        <form style="width: 600px;" method="post">
+
+        <?php 
+        if(isset($_POST['acao'])){
+          $user = $_POST['user'];
+          $password = $_POST['password'];
+          $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = ? AND password = ? ");
+          $sql->execute(array($user,$password));
+
+          if($sql->rowCount() == 1){
+            //sucesso
+            $_SESSION['login'] = true;
+            $_SESSION['user'] = $user;
+            $_SESSION['password'] = $password;
+            header('Location: '.INCLUDE_PATH_PAINEL);
+            die();
+          }else{
+            //falhou
+            echo '<h6>Usuario ou senha incorreto.</h6>';
+          }
+
+        }
+        
+        ?>
             <div class="mb-3">
-                <label for="login" class="form-label">Login</label>
-                <input type="text" class="form-control" id="login" name="login" required>
+                <label for="user" class="form-label">Login</label>
+                <input type="text" class="form-control" id="user" name="user" required>
             </div>
             <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" name="password">
             </div>
            
             <input type="submit" class="btn btn-outline-dark" value="Entrar" name="acao">

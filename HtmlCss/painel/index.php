@@ -1,5 +1,5 @@
 <?php
-    include('Painel.php');
+    include('./classes/Painel.php');
     include('../config.php');
 
     //Validação 
