@@ -24,10 +24,14 @@
           $sql->execute(array($user,$password));
 
           if($sql->rowCount() == 1){
+            $info = $sql->fetch();
             //sucesso
             $_SESSION['login'] = true;
             $_SESSION['user'] = $user;
             $_SESSION['password'] = $password;
+            $_SESSION['cargo'] = $info['cargo'];
+            $_SESSION['nome'] = $info['nome'];
+            $_SESSION['img'] = $info['img'];
             header('Location: '.INCLUDE_PATH_PAINEL);
             die();
           }else{
