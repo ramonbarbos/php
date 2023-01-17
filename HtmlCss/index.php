@@ -1,4 +1,5 @@
 <?php include('config.php' ); ?>
+<?php include('./painel/classes/Site.php' ); Site::updateUsuarioOnline();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +34,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Meu Site</a>
+          <a class="navbar-brand" href="<?php echo INCLUDE_PATH ?>">Meu Site</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -53,7 +54,7 @@
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Entrar</a></li>
+                  <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL?>">Entrar</a></li>
                   <li><a class="dropdown-item" href="#">Registrar</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Sair</a></li>
