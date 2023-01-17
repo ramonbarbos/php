@@ -1,5 +1,4 @@
 
-<?php  include('./classes/MySql.php') ?>
 
 <!doctype html>
 <html lang="pt-br">

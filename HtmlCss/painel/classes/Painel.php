@@ -1,5 +1,6 @@
 <?php
 
+include('MySql.php' );
 
 
 class Painel{
@@ -27,6 +28,18 @@ class Painel{
         }
     }
 
+    public static function listarUsuariosOnline(){
+        self::limparUsuariosOnline();
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.online` ");
+        $sql->execute();
+        return $sql->fetchAll();
+
+    }
+
+    public static function limparUsuariosOnline(){
+        $date = date('Y-m-d H:i:s');
+        $sql = MySql::conectar()->exec("DELETE FROM `tb_admin.online` WHERE ultima_acao < '$date' - INTERVAL 1 MINUTE ");
+    }
 }
 
 ?>

@@ -1,4 +1,7 @@
-
+<?php  
+   //include('../classes/Painel.php');
+    $usuariosOnline = Painel::listarUsuariosOnline();
+?>
                 <div class="container" style="height: 200px; background-color: #F2F2F2;margin-top: 70px;">
                 
                 <div class="cabeca"  style=" height: 50px; display: flex; align-items: center;">
@@ -10,7 +13,7 @@
                           <div class="caixa-usuario" style="width: 280px;height: 80px;background-color: #F2CB05; ">
                             <div class="frase" style="margin: 10px; color:#F2F2F2">
                               <p>Usuarios Online</p>
-                              <p>10</p>
+                              <p><?php echo count($usuariosOnline); ?></p>
                             </div>
                         </div>
                           
