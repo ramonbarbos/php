@@ -1,5 +1,5 @@
 <?php 
-
+  include('classes/Usuario.php');
     if(isset($_GET['loggout'])){
         Painel::loggout();
     }
@@ -30,7 +30,7 @@
                 <a class="nav-link active" aria-current="page" href="<?php echo INCLUDE_PATH_PAINEL; ?>">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="servicos">Serviços</a>
+                <a class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>editar-user">Editar</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo INCLUDE_PATH_PAINEL?>?loggout" >Sair</a>

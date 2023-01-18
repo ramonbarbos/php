@@ -40,6 +40,15 @@ class Painel{
         $date = date('Y-m-d H:i:s');
         $sql = MySql::conectar()->exec("DELETE FROM `tb_admin.online` WHERE ultima_acao < '$date' - INTERVAL 1 MINUTE ");
     }
+
+    public static function alerta($tipo,$messagem){
+        if($tipo == 'sucesso'){
+            echo '<h4>'.$messagem.'</h4>';
+        }else if($tipo == 'erro'){
+            echo '<h4>'.$messagem.'</h4>';
+
+        }
+    }
 }
 
 ?>
