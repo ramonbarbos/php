@@ -7,7 +7,7 @@
     //CONSTANTES DE ROTAS
     define('INCLUDE_PATH','http://localhost/PHP/HtmlCss/');
     define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
-
+    define('BASE_DIR_PAINEL',__DIR__.'/painel');
     
     //conectar com o banco de dados
     define('HOST','localhost');
