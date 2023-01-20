@@ -1,3 +1,7 @@
+<?php
+    verificaPermissaoPagina(2);
+?>
+
 <div class="container-sm" style="border-radius: 7px; background-color: rgb(250, 250, 250); display: flex; align-items: center;justify-content: center; padding: 40px; width: 800px;">
 
         <form style="width: 600px;" method="post" enctype="multipart/form-data">
@@ -47,7 +51,7 @@
            
             <div class="mb-3">
                 <label for="formFile" class="form-label">Imagem</label>
-                <input class="form-control" type="file" id="formFile" name="imagem">
+                <input class="form-control" type="file" id="formFile" name="imagem" required>
                 <input type="hidden" name="imagem_atual" value="<?php echo $_SESSION['img'];?>">
              </div>
 

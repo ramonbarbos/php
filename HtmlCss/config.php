@@ -19,14 +19,28 @@
     //Constante
     define('NOME_EMPRESA','Meu Site');
 
+   
+
     //Funcoes
     function pegaCargo($cargo){
-        $arr =[
-            '0' => 'Normal',
-            '1' => 'Sub Administrador',
-            '2' => 'Administrador'
-        ];
-        return $arr[$cargo];
+       
+        return Painel::$cargos[$cargo];
     }
 
+    function verificaPermissaoMenu($permissao){
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            echo 'style="display:none;"';
+        }
+    }
+
+    function verificaPermissaoPagina($permissao){
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            include('painel/pages/permissao-negada.php');
+            die();
+        }
+    }
 ?>

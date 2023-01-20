@@ -4,6 +4,14 @@ include('MySql.php' );
 
 
 class Painel{
+
+
+    public static   $cargos =[
+        '0' => 'Normal',
+        '1' => 'Sub Administrador',
+        '2' => 'Administrador'
+    ];
+
     public static function logado(){
         return isset($_SESSION['login']) ? true : false;
     }
@@ -68,8 +76,10 @@ class Painel{
     }
 
     public static function uploadImagem($file){
-       if( move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$file['name']))
-            return $file['name'];
+        $formato = explode('.',$file['name']);
+        $imagemNome = uniqid().'.'.$formato[count($formato) - 1];
+       if( move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$imagemNome))
+            return $imagemNome;
         else    
             return false;
        

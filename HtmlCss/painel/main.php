@@ -30,7 +30,10 @@
                 <a class="nav-link active" aria-current="page" href="<?php echo INCLUDE_PATH_PAINEL; ?>">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>editar-user">Editar</a>
+                <a <?php verificaPermissaoMenu(2); ?>  class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>editar-user">Editar</a>
+              </li>
+              <li class="nav-item">
+                <a <?php verificaPermissaoMenu(2); ?>  class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>cadastrar-user">Cadastrar</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo INCLUDE_PATH_PAINEL?>?loggout" >Sair</a>
@@ -62,7 +65,7 @@
         </div>
       </nav>
 
-      <section style="height: 90vh; background-color: #BFBFBF; display: flex;justify-content: center; flex-direction: column; ">
+      <section style="height: 110vh; background-color: #BFBFBF; display: flex;justify-content: center; flex-direction: column; ">
 
    
       
