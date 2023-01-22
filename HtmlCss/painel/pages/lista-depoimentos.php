@@ -1,5 +1,13 @@
 <?php
-    verificaPermissaoPagina(2);
+
+    if(isset($_GET['excluir'])){
+        $idExcluir = intval($_GET['excluir']);
+        Painel::deletar('tb_site.depoimentos',$idExcluir);
+        Painel::redirect(INCLUDE_PATH_PAINEL.'lista-depoimentos');
+
+    }
+
+    verificaPermissaoPagina(0);
     $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     $porPagina = 2;
     
@@ -35,8 +43,8 @@
             <tr>
             <td><?php echo $value['nome'];?></td>
             <td><?php echo $value['data'];?></td>
-            <td><button type="button" class="btn btn-warning">Iditar</button></td>
-            <td> <button type="button" class="btn btn-danger">Excluir</button></td>
+            <td><a  href="<?php echo INCLUDE_PATH_PAINEL ?>editar-depoimento?id=<?php echo $value['id']; ?>" class="btn btn-warning">Iditar</a></td>
+            <td> <a type="button" class="btn btn-danger" href="<?php echo INCLUDE_PATH_PAINEL ?>lista-depoimentos?excluir=<?php echo $value['id']; ?>">Excluir</a></td>
             </tr>
             <?php   }    ?>
         </tbody>

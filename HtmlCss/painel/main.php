@@ -39,7 +39,7 @@
                 <a <?php verificaPermissaoMenu(2); ?>  class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>cadastrar-depoimento">Cadastrar Depoimentos</a>
               </li>
               <li class="nav-item">
-                <a <?php verificaPermissaoMenu(2); ?>  class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>lista-depoimentos">Listar Depoimentos</a>
+                <a <?php verificaPermissaoMenu(0); ?>  class="nav-link" href="<?php INCLUDE_PATH_PAINEL ?>lista-depoimentos">Listar Depoimentos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo INCLUDE_PATH_PAINEL?>?loggout" >Sair</a>
