@@ -24,3 +24,23 @@
             </div>
     </div><!--CENTER-->
     </section><!--DESCRICAO-->
+
+    <section class="container" style="background-color: #262626 ;color: white;height: 85vh; display:flex;align-items: center;">
+        <div class="center-a">
+
+        <?php 
+         $sql = MySql::conectar()->prepare("SELECT * FROM `tb_site.depoimentos`   ORDER BY order_id ASC LIMIT 3");
+         $sql->execute();
+        $depoimentos = $sql->fetchAll();
+        foreach($depoimentos as $key => $value) {
+        ?>
+            <div class="w50-t">
+                <h2><?php echo $value['nome']; ?></h2>
+                <p><?php echo $value['depoimento']; ?></p>
+                <p><?php echo $value['data']; ?></p>
+
+            </div>
+            <?php } ?>
+          
+    </div><!--CENTER-->
+    </section><!--DESCRICAO-->

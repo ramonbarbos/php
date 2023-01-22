@@ -27,7 +27,7 @@
          <div class="mb-3 form-group">
                 <label for="password" class="form-label">Depoimento</label>
                 <textarea class="form-control" name="depoimento" id="" cols="30" rows="10"></textarea>
-            </div>
+            </div> 
 
             <div class="mb-3 form-group">
                 <label  class="form-label">Data</label>

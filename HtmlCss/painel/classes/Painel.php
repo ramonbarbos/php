@@ -114,11 +114,11 @@ class Painel{
 
     public static function selectAll($tabela,$start = null,$end = null){
         if($start == null && $end == null){
-         $sql =   MySql::conectar()->prepare("SELECT * FROM `$tabela`");  
+         $sql =   MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY order_id ASC");  
          $sql->execute();
 
         }else{
-            $sql =   MySql::conectar()->prepare("SELECT * FROM `$tabela` LIMIT $start,$end");  
+            $sql =   MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY order_id ASC LIMIT $start,$end");  
             $sql->execute();
 
         }
@@ -182,7 +182,23 @@ class Painel{
 
     }
 
+    public static function orderItem($tabela,$orderType,$idItem){
+        if($orderType == 'up'){
+            $infoItemAtual = Painel::select($tabela, 'id=?',array($idItem));
+            $order_id = $infoItemAtual['order_id'];  
+            $itemBefore = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE order_id < $order_id LIMIT 1");
+            $itemBefore->execute();
+            if($itemBefore->rowCount() == 0)
+                return;
+            
+            $itemBefore = $itemBefore->fetch();
+            Painel::updateDepoimento(array('nome_tabela'=>$tabela,'id'=>$itemBefore['id'],'order_id'=>$infoItemAtual['order_id']));
+            Painel::updateDepoimento(array('nome_tabela'=>$tabela,'id'=>$infoItemAtual['id'],'order_id'=>$itemBefore['order_id']));
+            
+        }else if($orderType == 'down'){
 
+        }
+    } 
 
 }
 

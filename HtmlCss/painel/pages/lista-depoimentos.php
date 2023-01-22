@@ -5,6 +5,8 @@
         Painel::deletar('tb_site.depoimentos',$idExcluir);
         Painel::redirect(INCLUDE_PATH_PAINEL.'lista-depoimentos');
 
+    }else if(isset($_GET['order']) && isset($_GET['id'])){
+        Painel::orderItem('tb_site.depoimentos',$_GET['order'],$_GET['id']);
     }
 
     verificaPermissaoPagina(0);
@@ -33,6 +35,8 @@
             <th scope="col">Data</th>
             <th scope="col">#</th>
             <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
             </tr>
         </thead>
        
@@ -45,6 +49,9 @@
             <td><?php echo $value['data'];?></td>
             <td><a  href="<?php echo INCLUDE_PATH_PAINEL ?>editar-depoimento?id=<?php echo $value['id']; ?>" class="btn btn-warning">Iditar</a></td>
             <td> <a type="button" class="btn btn-danger" href="<?php echo INCLUDE_PATH_PAINEL ?>lista-depoimentos?excluir=<?php echo $value['id']; ?>">Excluir</a></td>
+            <td><a class="btn btn-info" href="<?php echo INCLUDE_PATH_PAINEL ?>lista-depoimentos?order=up&id=<?php echo $value['id']; ?>"><i class="fa fa-angle-up" aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-info" href="<?php echo INCLUDE_PATH_PAINEL ?>lista-depoimentos?order=donw&id=<?php echo $value['id']; ?>"><i class="fa fa-angle-down" aria-hidden="true"></i></a></td>
+
             </tr>
             <?php   }    ?>
         </tbody>
