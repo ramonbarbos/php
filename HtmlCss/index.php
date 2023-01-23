@@ -1,5 +1,6 @@
 <?php include('config.php' ); ?>
 <?php include('./painel/classes/Site.php' ); Site::updateUsuarioOnline();?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

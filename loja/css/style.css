@@ -1,0 +1,17 @@
+
+
+#servicos{
+    background-color: rgb(155, 198, 198);
+    height: 100vh;
+}
+#carouselExampleControls{
+    height: 50vh;
+}
+#legenda{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(85, 99, 99);
+
+}
