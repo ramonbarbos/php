@@ -10,7 +10,7 @@ include('MySql.php');
         }
 
         //Função Logout
-        public static function loggout(){
+        public static function logout(){
             session_destroy();
             header('Location: '.INCLUDE_PATH_PAINEL);
         }

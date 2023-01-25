@@ -38,15 +38,16 @@
             if($sql->rowCount() == 1){
                 //Pegando informação no banco de dados
                 $info = $sql->fetch();
-                //Atribuindo as informações para a Sessão
+                //Atribuindo as informações que esta no banco de dados para a Sessão
                 $_SESSION['login'] = true;
                 $_SESSION['user'] = $user;
                 $_SESSION['password'] = $password;
                 $_SESSION['cargo'] = $info['cargo'];
                 $_SESSION['nome'] = $info['nome'];
                 $_SESSION['img'] = $info['img'];
+                echo '<h6>Logado</h6>';
                 header('Location: '.INCLUDE_PATH_PAINEL);
-                die();
+                //die();
             }else{
                 echo '<h6>Usuario ou senha incorreto.</h6>';
             }
