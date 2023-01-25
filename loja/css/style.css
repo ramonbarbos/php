@@ -5,7 +5,7 @@
 }
 
 #servicos{
-    background-color: rgb(155, 198, 198);
+    background-color: rgb(239, 239, 239);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -21,3 +21,13 @@
     background-color: rgb(85, 99, 99);
 
 }
+
+.carousel{
+    width: 100%;
+}
+
+.carousel-item{
+    height: 450px;
+
+}
+

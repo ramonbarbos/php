@@ -3,7 +3,8 @@
 <div id="container-servicos" class="container">
 
   <div class="content-img">
-      <div  id="img-servicos" class="img" >Foto</div>
+    <img class="d-block w-100" src="./img/foto-pedro.png" alt="Second slide" style="height: 100%;">
+      
   </div>
 
   <div class="content-servicos">
