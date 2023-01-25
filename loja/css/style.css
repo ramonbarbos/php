@@ -1,3 +1,5 @@
+/*Site de Icones: https://fontawesome.com/v4/get-started/*/
+
 *{
     margin: 0;
     padding: 0;
@@ -28,6 +30,6 @@
 
 .carousel-item{
     height: 450px;
-
+    justify-content: end;
 }
 
