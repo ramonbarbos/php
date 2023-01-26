@@ -15,12 +15,9 @@
     
       <ul class="navbar-nav" >
 
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Serviços<span class="sr-only">(current)</span></a>
-        </li>
+       
         
         <li class="nav-item">
-        <i class="fa fa-sign-out" aria-hidden="true"></i>
           <a class="nav-link" href="<?php echo INCLUDE_PATH_PAINEL ?>?logout">Sair</a>
         </li>
       

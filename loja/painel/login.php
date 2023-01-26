@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 
 </head>
 <body>
-    
+
 
 
 <section style="background-color: #ebebeb;display: flex; align-items: center; height: 100vh;">
@@ -65,6 +67,7 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
        
+        <a  class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH; ?>" >Voltar</a>
         <input type="submit" class="btn btn-outline-dark" value="Entrar" name="acao">
 </form>
 
