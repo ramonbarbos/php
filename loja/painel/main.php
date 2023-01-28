@@ -35,7 +35,7 @@
 
         <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="">Usuario</a>
+        <a class="nav-link " href="<?php INCLUDE_PATH_PAINEL ?>cadastro-user">Usuario</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Slide</a>
@@ -47,6 +47,10 @@
         <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
+
+
+      <?php  Painel::carregarPagina(); ?>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
