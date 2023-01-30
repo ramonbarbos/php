@@ -4,7 +4,7 @@
  
   
 
-    <a class="navbar-brand" href="#">Loja</a>
+    <a class="navbar-brand" href="<?php echo INCLUDE_PATH_PAINEL?>">Painel de Controle</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

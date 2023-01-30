@@ -4,6 +4,12 @@ include('MySql.php');
 
     class Painel{
 
+        public static   $cargos =[
+            '0' => 'Normal',
+            '1' => 'Sub Administrador',
+            '2' => 'Administrador'
+        ];
+
         public static function logado(){
             //Validando se o login já está autenticado
             return isset($_SESSION['login']) ? true : false;
@@ -30,6 +36,26 @@ include('MySql.php');
                 include('pages/home.php');
 
             }
+        }
+
+        public static function alerta($tipo,$messagem){
+            if($tipo == 'sucesso'){
+                echo '<h4>'.$messagem.'</h4>';
+            }else if($tipo == 'erro'){
+                echo '<h4>'.$messagem.'</h4>';
+    
+            }
+        }
+
+        //Atualizar imagem imagem
+        public static function uploadImagem($file){
+            $formato = explode('.',$file['name']);
+            $imagemNome = uniqid().'.'.$formato[count($formato) - 1];
+             if( move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$imagemNome))
+                return $imagemNome;
+            else    
+                return false;
+        
         }
     }
 

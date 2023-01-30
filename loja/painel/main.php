@@ -1,7 +1,7 @@
 <?php
 
     include('class/ComponentePainel.php');
-
+    include('class/Usuario.php');
     if(isset($_GET['logout'])){
         Painel::logout();
        
@@ -35,7 +35,7 @@
 
         <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link " href="<?php INCLUDE_PATH_PAINEL ?>cadastro-user">Usuario</a>
+        <a class="nav-link " href="<?php INCLUDE_PATH_PAINEL ?>cadastro">Usuario</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Slide</a>
