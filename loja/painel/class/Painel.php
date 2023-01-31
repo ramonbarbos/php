@@ -2,13 +2,13 @@
 
 include('MySql.php');
 
-    class Painel{
+        class Painel{
 
-        public static   $cargos =[
-            '0' => 'Normal',
-            '1' => 'Sub Administrador',
-            '2' => 'Administrador'
-        ];
+            public static   $cargos =[
+                '0' => 'Normal',
+                '1' => 'Sub Administrador',
+                '2' => 'Administrador'
+            ];
 
         public static function logado(){
             //Validando se o login já está autenticado
@@ -47,7 +47,24 @@ include('MySql.php');
             }
         }
 
-        //Atualizar imagem imagem
+        //Validar Imagem de Cadastro
+        public static function imagemValida($imagem){
+            if($imagem['type'] == 'image/jpeg' ||
+               $imagem['type'] == 'image/jpg' ||
+               $imagem['type'] == 'image/png' ){
+    
+                $tamanho = $imagem['size']/1024;
+                if($tamanho < 300)
+                    return true;
+                else
+                    return false;
+    
+            }else{
+                return false;
+            }
+    
+        }
+        //Cadastrar imagem
         public static function uploadImagem($file){
             $formato = explode('.',$file['name']);
             $imagemNome = uniqid().'.'.$formato[count($formato) - 1];
@@ -57,6 +74,10 @@ include('MySql.php');
                 return false;
         
         }
+
+
+    
+     
     }
 
 ?>

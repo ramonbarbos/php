@@ -16,7 +16,9 @@
       <ul class="navbar-nav" >
 
        
-        
+      <li class="nav-item">
+      <img style="height: 50px;width: 50px; border-radius: 100px;" src="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $_SESSION['img']; ?>" alt="">
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo INCLUDE_PATH_PAINEL ?>?logout">Sair</a>
         </li>

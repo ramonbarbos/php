@@ -1,8 +1,9 @@
 <?php
 
-    
+ verificaPermissaoPagina(2);
 
 ?>
+
 
 
 <section style="background-color: #ebebeb;display: flex; align-items: center; height: 100vh;">

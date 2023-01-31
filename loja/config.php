@@ -15,6 +15,27 @@
     define('PASSWORD','');
     define('DATABASE','site_1');
 
+    //Funcoes
+      function pegaCargo($cargo){
+       
+        return Painel::$cargos[$cargo];
+    }
 
+    function verificaPermissaoMenu($permissao){
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            echo 'style="display:none;"';
+        }
+    }
+
+    function verificaPermissaoPagina($permissao){
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            include('painel/pages/permissao-negada.php');
+            die();
+        }
+    }
 
 ?>
