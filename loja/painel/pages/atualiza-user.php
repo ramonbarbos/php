@@ -2,6 +2,17 @@
 
  verificaPermissaoPagina(2);
 
+ if(isset($_GET['id'])){
+    //Captar id da URL
+    $id = (int)$_GET['id'];
+    //Exibir o usuario no input 
+    $user = Painel::select('tb_admin.usuarios','id=?',array($id));
+}else{
+    //Se o ID não for informado irá da a tela de erro 
+    Painel::alerta('erro','Voce precisa passar o id!');   
+    die();
+}
+
 ?>
 
 
@@ -15,47 +26,31 @@
 
 
     <?php
-
         if(isset($_POST['acao'])){
-            $nome = @$_POST['nome'];
-           $senha = @$_POST['password'];
-           $imagem =@$_FILES['imagem'];
-           $imagem_atual = $_POST['imagem_atual'];
-           $usuario =  new Usuario();
-
-           
-           if($imagem['name'] != ''){
-            if(Painel::imagemValida($imagem)){
-                    $imagem = Painel::uploadImagem($imagem);
-                    if($usuario->atualizarUsuario($nome,$senha,$imagem)){
-                        Painel::alerta('sucesso','Atualizado  com sucesso com a imagem');
-                    }else{
-                        Painel::alerta('erro','Ocorreu um erro ao atualizar com a imagem!');
-                    }
-                }
+            //Enviei o meu formulario
+            if(Painel::updateCadastro($_POST)){
+                Painel::alerta('sucesso','A atualização de depoimento foi feito com sucesso!');   
+                $user = Painel::select('tb_admin.usuarios','id=?',array($id));
+                
             }else{
-                $imagem = $imagem_atual;
-                $usuario =  new Usuario();
-                if($usuario->atualizarUsuario($nome,$senha,$imagem)){
-                    Painel::alerta('sucesso','Atualizado  com sucesso com a imagem');
-
-                }else{
-                    Painel::alerta('erro','Ocorreu um erro ao atualizar!');
-
-                }
+                Painel::alerta('erro','VCampos vazios nao sao permitidos');   
             }
+        
+        
+
         }
+        
 
     ?>
   
      
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $_SESSION['nome'];?>"  >
+            <input type="text" class="form-control" id="nome" name="nome" value="<?php  echo $user['nome'];?>"  >
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="password" name="password"  value="<?php echo $_SESSION['password'];?>">
+            <input type="password" class="form-control" id="password" name="password"  >
         </div>
        
 
@@ -68,6 +63,9 @@
        
          <a class="btn btn-outline-primary" href="<?php INCLUDE_PATH_PAINEL ?>cadastro">Voltar</a>
         <input type="submit" class="btn btn-outline-dark" value="Atualizar" name="acao">
+
+        <input type="hidden" name="id" value="<?php echo $id; ?>" />
+        <input type="hidden" name="nome_tabela" value="tb_admin.usuarios" />
 
 </form>
 
