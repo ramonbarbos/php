@@ -143,6 +143,50 @@ include('MySql.php');
             die();
         }
 
+        //Insert dinamico
+        public static function insert($arr){
+            $certo = true;
+            $nome_tabela = $arr['nome_tabela'];
+            $query = "INSERT INTO `$nome_tabela` VALUES (null";
+    
+            foreach($arr as $key => $value){
+                $nome = $key;
+                $valor = $value;
+                if($nome == 'acao' || $nome == 'nome_tabela' )
+                    continue;
+                
+                if($value == ''){
+                    $certo = false;
+                    break;
+                }
+                $query.=",?";
+                $parametros[] = $value;
+            }
+            $query.=")";
+            if($certo == true){
+                $sql = MySql::conectar()->prepare($query);
+                $sql->execute($parametros);
+            }
+           
+            return $query;
+        }
+        
+        public static function generateSlug($str){
+			$str = mb_strtolower($str);
+			$str = preg_replace('/(â|á|ã)/', 'a', $str);
+			$str = preg_replace('/(ê|é)/', 'e', $str);
+			$str = preg_replace('/(í|Í)/', 'i', $str);
+			$str = preg_replace('/(ú)/', 'u', $str);
+			$str = preg_replace('/(ó|ô|õ|Ô)/', 'o',$str);
+			$str = preg_replace('/(_|\/|!|\?|#)/', '',$str);
+			$str = preg_replace('/( )/', '-',$str);
+			$str = preg_replace('/ç/','c',$str);
+			$str = preg_replace('/(-[-]{1,})/','-',$str);
+			$str = preg_replace('/(,)/','-',$str);
+			$str=strtolower($str);
+			return $str;
+		}
+
     }
 
 ?>

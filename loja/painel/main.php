@@ -38,7 +38,7 @@
         <a class="nav-link " <?php verificaPermissaoMenu(2) ?> href="<?php INCLUDE_PATH_PAINEL ?>cadastro">Usuario</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="#">Slide</a>
+        <a class="nav-link" <?php verificaPermissaoMenu(2) ?> href="<?php INCLUDE_PATH_PAINEL ?>noticia">Noticias</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
