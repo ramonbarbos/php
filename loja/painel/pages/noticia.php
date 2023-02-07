@@ -15,7 +15,7 @@
 
     <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>cadastro-categoria">Cadastrar Categoria</a>
     <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>gerenciar-categoria" >Gerenciar Categoria</a>
-    <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>cadastro-noticia">Cadastrar Noticia</a>
+    <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Noticia</a>
     <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>gerenciar-noticia" >Gerenciar Noticia</a>
 
 </form>
