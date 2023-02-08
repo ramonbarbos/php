@@ -74,7 +74,7 @@
         </div>
           
         <div class="mb-3">
-            <labelclass="form-label">Capa</label>
+            <label class="form-label">Capa</label>
             <input type="file" class="form-control"  name="capa">
         </div>
 
