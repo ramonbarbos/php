@@ -33,8 +33,10 @@
             $conteudo = @$_POST['conteudo'];
             $capa = @$_FILES['capa'];
             $capa_atual = @$_POST['capa_atual'];
-            echo $titulo;
-            echo $conteudo;
+            $categoria = @$_POST['categoria_id'];
+            echo $categoria;
+       
+
             if($capa['name'] != '' ){
 
                 if(Painel::imagemValida($capa)){
@@ -43,26 +45,32 @@
 
                     $slug = Painel::generateSlug($titulo);
 
-                    $arr = [  'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem, 'id'=>$id,  'slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
+                    $arr = [ 'categoria'=>$categoria,'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem, 'id'=>$id,  'slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
 
                     Painel::updateCadastro($arr);
-                        Painel::alerta('sucesso','Noticia Atualizada!');  
+                        Painel::alerta('sucesso','Noticia Atualizada com capa!');  
+
+                    $noticia = Painel::select('tb_site.noticias','id=?',array($id));
+
+                  }else{
+                    Painel::alerta('erro','Formato da imagem nao é valido!');   
+
+                  }
+                
 
             }else{
                $imagem = $capa_atual;
                
                $slug = Painel::generateSlug($titulo);
 
-               $arr = [  'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem, 'id'=>$id,  'slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
+               $arr = [ 'categoria_id'=>$categoria,'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem, 'id'=>$id,  'slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
 
                Painel::updateCadastro($arr);
                    Painel::alerta('sucesso','Noticia Atualizada!');  
 
+                 $noticia = Painel::select('tb_site.noticias','id=?',array($id));
                 }
                 
-
-            }
-        
         
 
         }
@@ -83,8 +91,24 @@
         <div class="mb-3">
             <label class="form-label">Capa</label>
             <input type="file" class="form-control"  name="capa">
-            <input type="hidden" name="capa_atual" value="<?php echo $noticia['capa'] ?>" >
+            <input type="hidden" name="capa_atual" value="<?php echo $noticia['capa']; ?>" >
 
+        </div>
+
+        <div class="mb-3">
+        <label for="titulo" class="form-label">Categoria</label>
+        <select class="form-select"  name="categoria_id">
+            <?php
+                $categoria = Painel::selectAll('tb_site.categoria');
+                 
+                foreach($categoria as $key => $value){
+
+            ?>
+            <option <?php if($value['id'] == $noticia['categoria_id']) echo 'selected'; ?> value="<?php echo $value['id'] ?>"><?php echo $value['nome']; ?></option>
+            <?php 
+                }
+            ?>
+        </select>
         </div>
        
          <a class="btn btn-outline-primary" href="<?php INCLUDE_PATH_PAINEL ?>noticia">Voltar</a>

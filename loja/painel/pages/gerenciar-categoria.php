@@ -9,6 +9,18 @@ if(isset($_GET['excluir'])){
 
     $idExcluir = intval($_GET['excluir']);
     Painel::deletar('tb_site.categoria',$idExcluir);
+
+     //Apagando a categoria apagara todas as noticias vinculadas
+    $noticias = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ?");
+		$noticias->execute(array($idExcluir));
+		$noticias = $noticias->fetchAll();
+		foreach ($noticias as $key => $value) {
+			$imgDelete = $value['capa'];
+			Painel::deleteImagem($imgDelete);
+		}
+		$noticias = MySql::conectar()->prepare("DELETE FROM `tb_site.noticias` WHERE categoria_id = ?");
+		$noticias->execute(array($idExcluir));
+
     Painel::redirect(INCLUDE_PATH_PAINEL.'gerenciar-categoria');
 
 }

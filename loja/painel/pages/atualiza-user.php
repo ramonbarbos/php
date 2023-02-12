@@ -28,18 +28,45 @@
     <?php
         if(isset($_POST['acao'])){
             //Enviei o meu formulario
-            if(Painel::updateCadastro($_POST)){
-                Painel::alerta('sucesso','A atualização de depoimento foi feito com sucesso!');   
-                $user = Painel::select('tb_admin.usuarios','id=?',array($id));
-                
-            }else{
-                Painel::alerta('erro','VCampos vazios nao sao permitidos');   
-            }
         
-        
+            $nome = @$_POST['nome'];
+            $senha = @$_POST['password'];
+            $imagem = @$_FILES['imagem'];
+            $imagem_atual = @$_POST['imagem_atual'];
 
-        }
+            if($imagem['name'] != '' ){
+
+                if(Painel::imagemValida($imagem)){
+                    
+                    $imagem = Painel::uploadImagem($imagem);  
+
+                    Painel::deleteImagem($imagem_atual);
+
+                    $arr = [ 'nome' => $nome, 'password' => $senha, 'img' => $imagem, 'id'=>$id,'nome_tabela'=>'tb_admin.usuarios'];
+
+                    Painel::updateCadastro($arr);
+                        Painel::alerta('sucesso','Usuario Atualizada com Imagem!');  
+                  //Atualizar a pagina com os dados novos
+                    $user = Painel::select('tb_admin.usuarios','id=?',array($id));
+                  }else{
+                    Painel::alerta('erro','Formato da imagem nao é valido!');   
+
+                  }
+                
+
+            }else{
+                $imagem = $imagem_atual ;
+
+
+                $arr = [ 'nome' => $nome, 'password' => $senha, 'img' => $imagem, 'id'=>$id,'nome_tabela'=>'tb_admin.usuarios'];
+
+                Painel::updateCadastro($arr);
+                    Painel::alerta('sucesso','Usuario Atualizada com Imagem!');  
+                //Atualizar a pagina com os dados novos
+                $user = Painel::select('tb_admin.usuarios','id=?',array($id));
         
+        }
+    }
 
     ?>
   
@@ -50,14 +77,14 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="password" name="password"  >
+            <input type="password" class="form-control" id="password" name="password" value="<?php  echo $user['password'];?>" >
         </div>
        
 
         <div class="mb-3">
             <labelclass="form-label">Imagem</label>
             <input type="file" class="form-control"  name="imagem">
-            <input type="hidden" name="imagem_atual" value="<?php echo $_SESSION['img'];?>">
+            <input type="hidden" name="imagem_atual" value="<?php echo $user['img'];?>">
 
         </div>
        
