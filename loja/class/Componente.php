@@ -18,6 +18,7 @@
         public static function lateralNoticias(){
             include('./component/lateral-noticias.php');
         }
+      
         
     }
 

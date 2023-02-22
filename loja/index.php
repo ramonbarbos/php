@@ -3,14 +3,7 @@ include('./class/Componente.php');
 include('config.php');
  include('painel/class/Painel.php');
 
- /*$url = explode('/',$_GET['url']);
- if(!isset($url[2]))
-{
- $cat = MySql::conectar()->prepare("SELECT * FROM `tb_site.categoria` WHERE slug = ?");
- $cat->execute(array($url[1]));
- $cat = $cat->fetch();
 
- echo $cat['nome'];*/
 
 ?>
 
@@ -22,7 +15,7 @@ include('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--CSS -->
-    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH?>estilos/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -30,51 +23,40 @@ include('config.php');
   </head>
   <body>
      <?php Componente::carregarNav(); ?>
-    
-     <div id="legendas" class="container-fluid">
-     <?php 
-       
-          
-        /*   
-           if($cat['nome'] == ''){
-            echo '<div id="legendas" class="container-fluid">
-                  <p>Todas as Noticias</p>
-              </div>';
-          }else{
-            echo '<div id="legendas" class="container-fluid">
-            <p>Novas Noticias em '.$cat['nome'].'</p>
-          </div>';
-          }
-
-          $query = "SELECT * FROM `tb_site.noticias`";
-          if($cat['nome'] !=''){
-            $query.="WHERE categoria_id = $cat[id]";
-          }
-          $sql =  MySql::conectar()->prepare($query);
-          $sql->execute();
-          $noticias = $sql->fetchAll();
-     */ ?>
-     </div>
-
-
-    <section id="painel-noticia" class="container mt-5">
-
      
+    
+     <div class="container-principal">
+   
+   <?php
+      $url = isset($_GET['url']) ? $_GET['url'] : 'home'; //Buscando a pagina home
 
-        <div id="lateral" class="container-fluid" >
-     <?php Componente::lateralNoticias(); ?>
-    </div>
+      if(file_exists('page/'.$url.'.php')){
+        include('page/'.$url.'.php');
+      }else{
+        //Podemos fazer o que quiser pois a pagina nao existe
+        $urlPar =  explode('/',$url);
+        if($urlPar[0] == 'noticia'){
+          include('page/noticia.php');
+        }else{
+           include('home.php');
+        }
+      }
+      
+   ?>
+ </div>
 
+      <?php
+        if(is_array($url) && strstr($url[0], 'noticia') !== false){
+      ?>
+      <script>
 
-     <div id="noticias" class="container-fluid" >
-     <?php Componente::carregarNoticias(); ?>
-    </div>
-
-
-
-    </section>
-
-
+       /*$(function(){
+          $('select').change(function()){
+            location.href=INCLUDE_PATH+"noticia/"+$(this).val();
+          })  x 
+        })*/
+      </script>
+      <?php } ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -83,4 +65,3 @@ include('config.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-    <?php   ?>

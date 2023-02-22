@@ -14,7 +14,6 @@
     <form style="width: 600px;" method="post" >
 
     <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>cadastro-user">Cadastrar</a>
-    <a class="btn btn-outline-primary" href="<?php echo INCLUDE_PATH_PAINEL ?>atualiza-user" >Atualizar</a>
 
 </form>
 
