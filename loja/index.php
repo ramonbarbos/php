@@ -1,4 +1,18 @@
-<?php include('./class/Componente.php'); include('config.php'); include('painel/class/Painel.php'); ?>
+<?php 
+include('./class/Componente.php'); 
+include('config.php');
+ include('painel/class/Painel.php');
+
+ /*$url = explode('/',$_GET['url']);
+ if(!isset($url[2]))
+{
+ $cat = MySql::conectar()->prepare("SELECT * FROM `tb_site.categoria` WHERE slug = ?");
+ $cat->execute(array($url[1]));
+ $cat = $cat->fetch();
+
+ echo $cat['nome'];*/
+
+?>
 
 <!doctype html>
 <html lang="pt-br">
@@ -18,11 +32,34 @@
      <?php Componente::carregarNav(); ?>
     
      <div id="legendas" class="container-fluid">
-        <p>Novas Noticias</p>
+     <?php 
+       
+          
+        /*   
+           if($cat['nome'] == ''){
+            echo '<div id="legendas" class="container-fluid">
+                  <p>Todas as Noticias</p>
+              </div>';
+          }else{
+            echo '<div id="legendas" class="container-fluid">
+            <p>Novas Noticias em '.$cat['nome'].'</p>
+          </div>';
+          }
+
+          $query = "SELECT * FROM `tb_site.noticias`";
+          if($cat['nome'] !=''){
+            $query.="WHERE categoria_id = $cat[id]";
+          }
+          $sql =  MySql::conectar()->prepare($query);
+          $sql->execute();
+          $noticias = $sql->fetchAll();
+     */ ?>
      </div>
 
 
     <section id="painel-noticia" class="container mt-5">
+
+     
 
         <div id="lateral" class="container-fluid" >
      <?php Componente::lateralNoticias(); ?>
@@ -46,3 +83,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+    <?php   ?>

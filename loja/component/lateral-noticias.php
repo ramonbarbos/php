@@ -2,7 +2,7 @@
 
 <div id="container-lateral" >
 
-    <div class="caixa mt-4" style="width: 18rem; height: 10rem;">
+    <div class="caixa mt-4 mb-5" style="width: 18rem; height: 10rem;">
 
         <div class="titulo mt-3">
             Realizar uma busca:
