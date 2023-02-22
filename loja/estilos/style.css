@@ -20,17 +20,9 @@
 }
 
 #lateral{
-    background-color:#e0ebce ;
+    background-color:#ffffff ;
     width: 40%;
    
     display: flex;
     justify-content: center;
-}
-.caixa{
-  background-color:  #c6cecf; 
-  border-radius: 6px;
-}
-#noticias{
-    background-color:#689224 ;
-
 }

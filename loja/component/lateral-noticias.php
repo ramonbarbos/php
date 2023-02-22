@@ -2,7 +2,7 @@
 
 <div id="container-lateral" >
 
-    <div class="caixa mt-4 mb-5" style="width: 18rem; height: 10rem;">
+    <div class="caixa mt-4 mb-5" style="width: 18rem; height: 10rem;background-color:  #c6cecf">
 
         <div class="titulo mt-3">
             Realizar uma busca:
@@ -29,13 +29,14 @@
             <select class="form-control mt-2"  name="categoria">
 
 
+            <option value="" selected="">Todas as categorias</option>
 
             <?php
                  $categorias = Painel::selectAll('tb_site.categoria');
                  foreach($categorias as $key => $value) {
 
              ?>
-                <option value="<?php echo $value['id'] ?> "> <?php echo $value['nome']; ?> </option>
+               <option <?php if($value['slug'] == @$url[1]) echo 'selected'; ?> value="<?php echo $value['slug'] ?>"><?php echo $value['nome']; ?></option>
                
               <?php } ?>
           

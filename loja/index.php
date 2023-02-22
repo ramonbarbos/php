@@ -34,29 +34,33 @@ include('config.php');
         include('page/'.$url.'.php');
       }else{
         //Podemos fazer o que quiser pois a pagina nao existe
-        $urlPar =  explode('/',$url);
-        if($urlPar[0] == 'noticia'){
+        $urlPar = explode('/',$url)[0];
+        if($urlPar == 'noticia'){
           include('page/noticia.php');
         }else{
-           include('home.php');
+        include('page/404.php');
+          
         }
+        include('home.php');
+
       }
       
    ?>
  </div>
+ <?php
 
-      <?php
-        if(is_array($url) && strstr($url[0], 'noticia') !== false){
+      if(is_array($url) && strstr($url[0],'noticia') !== false){
       ?>
       <script>
-
-       /*$(function(){
-          $('select').change(function()){
-            location.href=INCLUDE_PATH+"noticia/"+$(this).val();
-          })  x 
-        })*/
+        $(function(){
+          $('select').change(function(){
+            location.href=include_path+"noticia/"+$(this).val();
+          })
+        })
       </script>
-      <?php } ?>
+      <?php
+      }
+      ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

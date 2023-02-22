@@ -1,23 +1,20 @@
 
 <?php 
-
-
- $url = explode('/',$_GET['url']);
-  if(!isset($_GET[2]))
+  $url = explode('/',$_GET['url']);
+  if(!isset($url[2]))
   {
-    $cat = MySql::conectar()->prepare("SELECT * FROM `tb_site.categoria` WHERE slug = ?");
-    $cat->execute(array(@$url[1]));
-    $cat = $cat->fetch();
-   
-   print_r($cat);
-   
+  $cat = MySql::conectar()->prepare("SELECT * FROM `tb_site.categoria` WHERE slug = ?");
+  $cat->execute(array(@$url[1]));
+  $cat = $cat->fetch();
+    print_r($cat);
+   //$cat['nome'];
 ?>
 
 <div id="legendas" class="container-fluid">
      <?php 
        
           
-        /*  
+        /* 
            if($cat['nome'] == ''){
             echo '<div id="legendas" class="container-fluid">
                   <p>Todas as Noticias</p>
@@ -27,7 +24,7 @@
             <p>Novas Noticias em '.$cat['nome'].'</p>
           </div>';
           }
-
+ 
           $query = "SELECT * FROM `tb_site.noticias`";
           if($cat['nome'] !=''){
             $query.="WHERE categoria_id = $cat[id]";
@@ -36,6 +33,9 @@
           $sql->execute();
           $noticias = $sql->fetchAll();
     */  ?>
+    <div id="legendas" class="container-fluid">
+                  <p>Todas as Noticias</p>
+              </div>
      </div>
 
 
