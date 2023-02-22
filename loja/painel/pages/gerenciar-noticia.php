@@ -34,6 +34,7 @@ if(isset($_POST['acao'])){
     <th scope="col">Titulo</th>
     <th scope="col">Conteudo</th>
     <th scope="col">Categoria</th>
+    <th scope="col">Data</th>
     <th scope="col">Capa</th>
  
     </tr>
@@ -49,6 +50,7 @@ if(isset($_POST['acao'])){
     <td><?php echo $value['titulo'];?></td>
     <td><?php echo $value['conteudo'];?></td>
     <td><?php echo $value['categoria_id'];?></td>
+    <td><?php echo $value['data'];?></td>
     <td><img style="width: 50px; height: 50px;" src="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $value['capa'] ?>" alt=""></td>
     <td><a  href="<?php echo INCLUDE_PATH_PAINEL ?>editar-noticia?id=<?php echo $value['id']; ?>" class="btn btn-warning">Iditar</a></td>
     <td> <a <?php verificaPermissaoMenu(2) ?> type="button" class="btn btn-danger" href="<?php echo INCLUDE_PATH_PAINEL ?>gerenciar-noticia?excluir=<?php echo $value['id']; ?>">Excluir</a></td>

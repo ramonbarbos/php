@@ -30,7 +30,7 @@
                     
                     $imagem = Painel::uploadImagem($capa);  
                     $slug = Painel::generateSlug($titulo);
-                    $arr = [ 'categoria_id'=>$categoria_id,'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem,  'order_id'=>'0','slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
+                    $arr = [ 'categoria_id'=>$categoria_id,  'data'=>date('Y-m-d'), 'titulo' => $titulo, 'conteudo' => $conteudo, 'capa' => $imagem,  'order_id'=>'0','slug'=>$slug,'nome_tabela'=>'tb_site.noticias'];
 
                     Painel::insert($arr);
                         Painel::alerta('sucesso','Noticia cadastrada!');  

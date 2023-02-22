@@ -1,4 +1,4 @@
-<?php include('./class/Componente.php'); include('config.php'); ?>
+<?php include('./class/Componente.php'); include('config.php'); include('painel/class/Painel.php'); ?>
 
 <!doctype html>
 <html lang="pt-br">
@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--CSS -->
-    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/style.css">
-    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/servicos.css">
+    <link rel="stylesheet" href="estilos/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -17,25 +16,28 @@
   </head>
   <body>
      <?php Componente::carregarNav(); ?>
-     <?php Componente::carregarSlide(); ?>
     
-     <div id="legenda" class="container-fluid">
-        <h3>Nossos Serviços</h3>
+     <div id="legendas" class="container-fluid">
+        <p>Novas Noticias</p>
      </div>
 
-    
-     <section id="servicos" class="container-fluid" >
-     <?php Componente::carregarServicos(); ?>
+
+    <section id="painel-noticia" class="container mt-5">
+
+        <div id="lateral" class="container-fluid" >
+     <?php Componente::lateralNoticias(); ?>
+    </div>
+
+
+     <div id="noticias" class="container-fluid" >
+     <?php Componente::carregarNoticias(); ?>
+    </div>
+
+
+
     </section>
 
 
-     <div id="legenda" class="container-fluid">
-        <h3>Nossos Trabalhos</h3>
-     </div>
-
-    <section id="servicos" class="container-fluid" >
-     <?php Componente::carregarTrabalhos(); ?>
-    </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

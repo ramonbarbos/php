@@ -121,7 +121,7 @@ include('MySql.php');
 			if($certo == true){
 				if($single == false){
 					$parametros[] = $arr['id'];
-					$sql = MySql::conectar()->prepare($query.' WHERE id=?');
+					$sql = MySql::conectar()->prepare($query.' WHERE id=? ');
 					$sql->execute($parametros);
 				}else{
 					$sql = MySql::conectar()->prepare($query);
