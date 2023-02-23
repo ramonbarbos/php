@@ -39,16 +39,20 @@ include('config.php');
         include('page/'.$url.'.php');
       }else{
         //Podemos fazer o que quiser pois a pagina nao existe
-        $urlPar = explode('/',$url)[0];
-        if($urlPar == 'noticia'){
-          include('page/noticia.php');
-        }else{
-        include('page/404.php');
-          
-        }
-        include('home.php');
+			if( $url != 'contato'){
+
+            $urlPar = explode('/',$url)[0];
+            if($urlPar == 'noticia'){
+              include('page/noticia.php');
+            }else{
+            include('page/404.php');
+            }
+      }else{
+				include('pages/home.php');
+			}
 
       }
+
       
    ?>
  </div>
@@ -60,7 +64,6 @@ include('config.php');
         <script>
           $(function(){
             $('select').on('change', function() {
-              alert("vaiii")
                   location.href=include_path+"noticia/"+$(this).val();
               });
           })
