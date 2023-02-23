@@ -19,13 +19,19 @@
 	$post = $post->fetch();
 
 ?>
-<section class="noticia-single">
+<section class="container mt-5">
 	<div class="center">
 	<header>
-		<h1><i class="fa fa-calendar"></i> <?php echo $post['data'] ?> - <?php echo $post['titulo'] ?></h1>
+		<h1><i class="fa fa-calendar"></i>  <?php echo $post['titulo'] ?></h1>
+		<p><?php echo date('d/m/Y',strtotime($post['data']));?> </p>
 	</header>
-	<article>
-		<?php echo $post['conteudo']; ?>
+	<div class="img mt-5 mb-5">
+		<img class="card-img-top" src="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $post['capa'] ?>" alt="Card image cap" style="width: 100%; height: 500px;" >      
+
+	</div>
+
+	<article class="mb-5" >
+		<p style="text-align: justify;"> <?php echo $post['conteudo']; ?></p>
 	</article>
 	</div>
 </section>

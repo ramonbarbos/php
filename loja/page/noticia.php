@@ -34,7 +34,7 @@
                           
                 <div id="container-lateral" >
 
-                <div class="caixa mt-4 mb-5" style="width: 18rem; height: 10rem;background-color:  #c6cecf">
+                <div class="caixa mt-4 mb-5" style="width: 18rem; height: 10rem;background-color:  #c6cecf; border-radius: 7px;">
 
                     <div class="titulo mt-3">
                         Realizar uma busca:
@@ -48,7 +48,7 @@
                 </div>
 
 
-                <div class="caixa mt-4 mb-4" style="width: 18rem; height: 8rem;">
+                <div class="caixa mt-4 mb-4" style="width: 18rem; height: 8rem;background-color:  #c6cecf; border-radius: 7px;">
 
                     <div class="titulo mt-3">              
                         Selecionar categoria:
@@ -80,11 +80,12 @@
        </div><!--FIM LATERAL-->
 
 
-    <div id="container-noticias" ><!--INICIO NOTICIAS-->
+    <div id="container-noticias" style="" ><!--INICIO NOTICIAS-->
 
           
-              
-              <?php 
+          
+             
+        <?php 
                   
 
                   $query = "SELECT * FROM `tb_site.noticias` ";
@@ -102,19 +103,24 @@
                       $sql->execute(array($value['categoria_id']));
                       $categoriaNome = $sql->fetch()['slug'];
                   ?>
-                <div class="card mt-4 mb-4" style="width: 100%;">
-                <div class="card-body">
 
-                  <h5 class="card-title"><?php echo $value['titulo'];?></h5>
+              
+                <div class=" mt-4 mb-4" style="width: 100%;background-color:white;display:flex;">
+                <img class="card-img-top" src="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $value['capa'] ?>" alt="Card image cap" style="width: 50%; height: 260px;" >      
 
-                  <h6 class="card-subtitle mb-2 text-muted"><?php echo date('d/m/Y',strtotime($value['data']));?></p>
-                  
-                  <p class="card-text"><?php echo substr($value['conteudo'],0,300).'...';?></p>
+                  <div class="card-body">
 
-                  <a href="<?php echo INCLUDE_PATH; ?>noticia/<?php echo $categoriaNome; ?>/<?php echo $value['slug']; ?>" class="card-link">Link da Noticia</a>
-                </div>
+                    <h5 class="card-title"><?php echo $value['titulo'];?></h5>
+
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo date('d/m/Y',strtotime($value['data']));?></p>
+                    
+                    <p class="card-text"><?php echo substr($value['conteudo'],0,50).'...';?></p>
+
+                    <a href="<?php echo INCLUDE_PATH; ?>noticia/<?php echo $categoriaNome; ?>/<?php echo $value['slug']; ?>" class="card-link">Link da Noticia</a>
+                  </div>
                 </div>
           <?php } ?>
+      
 
 
           </div> <!--FIM NOTICIAS-->

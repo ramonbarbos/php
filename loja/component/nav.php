@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #329da8;">
-  <a class="navbar-brand" href="<?php echo INCLUDE_PATH?>">NOTICIAS TECH</a>
+  <a class="navbar-brand" href="<?php echo INCLUDE_PATH?>"><?php echo NOME_SITE; ?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
