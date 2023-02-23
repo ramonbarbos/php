@@ -21,7 +21,8 @@ include('config.php');
 
     <!--jQuery -->
 
-    <script src="js/jquery-3.6.3.js"></script>
+    <script src="<?php echo INCLUDE_PATH?>js/jquery-3.6.3.js"></script>
+    <script src="<?php echo INCLUDE_PATH?>js/constants.js"></script>
 
     <title><?php echo NOME_SITE; ?></title>
   </head>
@@ -58,9 +59,10 @@ include('config.php');
       ?>
         <script>
           $(function(){
-              $('select').change(function(){
+            $('select').on('change', function() {
+              alert("vaiii")
                   location.href=include_path+"noticia/"+$(this).val();
-              })
+              });
           })
         </script> 
       <?php } ?>
