@@ -13,7 +13,15 @@
 
    
     <div id="legendas" class="container-fluid">
-                  <p>Todas as Noticias</p>
+
+            <?php 
+            if(@$cat['nome'] ==''){ 
+              echo '<p>Todas as Noticias</p>';
+            }else{
+              echo '<p>'.$cat['nome'].'</p>';
+
+            }
+            ?>
               </div>
      
 
@@ -80,7 +88,7 @@
                   
 
                   $query = "SELECT * FROM `tb_site.noticias` ";
-                  if($cat['nome'] !=''){
+                  if(@$cat['nome'] !=''){
                     $query.="WHERE categoria_id = $cat[id]";
 
                   }

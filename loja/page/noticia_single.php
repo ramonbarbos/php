@@ -9,7 +9,7 @@
 	}
 	$categoria_info = $verifica_categoria->fetch();
 
-	$post = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticia` WHERE slug = ? AND categoria_id = ?");
+	$post = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ? AND categoria_id = ?");
 	$post->execute(array($url[2],$categoria_info['id']));
 	if($post->rowCount() == 0){
 		Painel::redirect(INCLUDE_PATH.'noticia');
