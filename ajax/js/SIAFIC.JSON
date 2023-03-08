@@ -1,0 +1,15 @@
+{
+    "tributoExterno": {
+      "codigo": "2",
+      "nome": "IPTU"
+    },
+    "valor": 100,
+    "descricao": "Pagamento de IPTU",
+    "dadosBancarios": {
+      "codigoDoBanco": "001",
+      "codigoDaAgencia": "0001",
+      "contaCorrente": "99999"
+    },
+    "data": "2022-01-02T09:26:54.866Z",
+    "tipoDoLancamento": 1
+  }

@@ -1,1 +1,1 @@
-var include_path = "http://localhost/PHP/loja/"
+var include_path = "http://localhost/PHP/rede/"
