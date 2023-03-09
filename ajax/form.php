@@ -1,6 +1,6 @@
 <?php
-        $data = array();
-        $data['retorno'] = 'Ola';
+       $nm = $_POST['nome'];
+        die(json_encode($nm));
+        //die(json_encode($_POST));
 
-        die(json_encode($data));
     ?>

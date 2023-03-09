@@ -11,27 +11,50 @@
 <body style="height: 100vh;display: flex; align-items: center;">
    <div class="container">
     
-  
+   <?php
+        if(isset($_POST['nome']) != ''){
+            $nm = $_POST['nome'];
+            //die(json_encode($nm));
+            echo $nm;
+        }
+        //die(json_encode($_POST));
+        echo 'teste';
+    ?>
+   
 
     <h4>Formulario</h4>
 
-   <form action="" method="post">
+    <form id="form" action="" method="post">
         <div class="row">
             <div class="col">
-            <input type="text" class="form-control" placeholder="Primeiro name" aria-label="First name">
+            <input type="text" class="form-control" name="primeiro" id="primeiro" placeholder="Primeiro name" aria-label="First name">
             </div>
             <div class="col">
-            <input type="text" class="form-control" placeholder="Segundo name" aria-label="Last name">
+            <input type="text" class="form-control" name="segundo" id="segundo" placeholder="Segundo name" aria-label="Last name">
             </div>
             <div class="col">
-                <input type="submit" name="acao" class="btn btn-primary" value="Enviar">
+                <input id="acao" class="btn btn-primary" value="Enviar">
             </div>
         </div>
    </form>
    </div>
 
-<script src="js/formulario.js"></script>
+ 
 
+<script>
+    var res;
+    $("#acao").click((e)=>{
+        e.preventDefault();
+        let dados = {nome: $('#primeiro').val(),
+                     sobrenome: $('#segundo').val()}
+        $.post("index.php",dados,function(result,status){
+            console.log(result);
+            console.log(status);
+        })
+    })
+
+
+</script>
 <script src="_bootstrap/js/popper.min.js"></script>
 <script src="_bootstrap/js/bootstrap.min.js"></script>
 </body>
