@@ -11,18 +11,15 @@
 <body style="height: 100vh;display: flex; align-items: center;">
    <div class="container">
     
-   <?php
-        if(isset($_POST['nome']) != ''){
-            $nm = $_POST['nome'];
-            //die(json_encode($nm));
-            echo $nm;
-        }
-        //die(json_encode($_POST));
-        echo 'teste';
-    ?>
+
    
+        <?php
+            $teste = $_POST;
+            echo $teste;
+        ?>
 
     <h4>Formulario</h4>
+    <div id="mensagem" ></div>
 
     <form id="form" action="" method="post">
         <div class="row">
@@ -41,20 +38,8 @@
 
  
 
-<script>
-    var res;
-    $("#acao").click((e)=>{
-        e.preventDefault();
-        let dados = {nome: $('#primeiro').val(),
-                     sobrenome: $('#segundo').val()}
-        $.post("index.php",dados,function(result,status){
-            console.log(result);
-            console.log(status);
-        })
-    })
 
-
-</script>
+   
 <script src="_bootstrap/js/popper.min.js"></script>
 <script src="_bootstrap/js/bootstrap.min.js"></script>
 </body>
